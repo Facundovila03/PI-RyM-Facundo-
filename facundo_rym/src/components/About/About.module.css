@@ -1,0 +1,33 @@
+.presentacion{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:40px;
+}
+
+.contenedorAbout{
+    background-color: rgb(221, 224, 171);
+    border: 10px solid rgb(146, 166, 71);
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    border-radius: 5px;
+}
+
+.imagen{
+    background-image: url(../../perfil.jpg);
+    background-size: contain;
+    display: inline-block;
+    height: 150px;
+    width: 100px;
+    margin:10px;
+    border-radius: 5px;
+}
+
+.texto{
+    width: 300px;
+    margin:10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+}
