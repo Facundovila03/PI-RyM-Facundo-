@@ -11,7 +11,7 @@ const Detail = () => {
     const URL_BASE = "https://be-a-rym.up.railway.app/api";
     const KEY = "442f0ea28ae6.6a826b229d78ecbc74d3";
 
-    axios(`${URL_BASE}/character/${detailId}?key=${KEY}`).then((response) =>
+    axios(`http://localhost:3001/rickandmorty/character/${detailId}`).then((response) =>
       setCharacter(response.data)
     );
   }, []);
