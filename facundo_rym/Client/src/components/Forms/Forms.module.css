@@ -1,0 +1,10 @@
+.contenedorEncuesta{
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.username{
+    color:black;
+}
