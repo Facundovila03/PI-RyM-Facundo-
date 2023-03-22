@@ -8,7 +8,11 @@ http.createServer((req,res)=>{
     console.log('esta llegando una peticion')
     if (req.url.includes('/rickandmorty/character')) {
         var id = req.url.split('/').pop()
-        const personaje = DATA.map((char)=> char.id === id)
+        console.log('hola')
+        console.log(DATA)
+        console.log('chau')
+        // const personaje = DATA.filter((char)=> char.id === id)
+        const personaje = DATA[id-1]
         res.writeHead(200,{'Content-Type':'application/json'});
         return res.end(JSON.stringify(personaje))
     }
