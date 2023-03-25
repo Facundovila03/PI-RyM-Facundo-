@@ -27,18 +27,21 @@ export default function Form (props){
     }
     
     return(
-        <form className={styles.contenedorEncuesta} onSubmit={handleSubmit}>
+        <div className={styles.Contenedor}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.username} >
-                <p>{errors.username}</p>
                 <label htmlFor="username">Username:</label>
-                <input type='text'  name="username"  value={userData.username} onChange={handleInputChange}></input>
+                <input type='text'  name="username"  value={userData.username} onChange={handleInputChange} placeholder={errors.username}></input>
+                <p> {errors.username}</p>
             </div>
-            <div>
-                <p>{errors.password}</p>
+            <div className={styles.PasswordContainer}>
                 <label htmlFor="password" >Password:</label>
-                <input type='text' name="password" onChange={handleInputChange} value={userData.password}></input>
+                <input type='text' name="password" onChange={handleInputChange} value={userData.password} className={styles.PasswordInput}></input>
+                <div className={styles.PasswordWarning}>x</div>
+                <p className={styles.warningMessagePass}>{errors.password}</p>
             </div>
-            <button >login</button>
+            <button className={styles.login} >login</button>
         </form>
+        </div>
     )
 }
