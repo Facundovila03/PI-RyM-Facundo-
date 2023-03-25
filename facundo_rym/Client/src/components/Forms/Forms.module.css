@@ -1,41 +1,109 @@
 .Contenedor{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    
+    display:flex;
+    justify-content: center;
 }
 
 .form{
-    grid-area: 2 / 2 / 3 / 3;
+    margin-top:100px;
     background-color: brown;
+    position:relative;
+    padding:20px;
+    padding-top:30px;
     display:flex;
     flex-direction: column;
     align-items: center;
-    width: 500px;
-}
-
-.username{
-    color:black;
-}
-
-.login{
-    width: fit-content;
+    height:125px;
+    width:350px;
 }
 
 .PasswordContainer{
     display:flex;
-    flex-direction: row;
-
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
 }
 
 .PasswordInput{
+    margin:5px;
     height: 1.2em;
-    margin-right:5px;
+    width: 150px;
 }
 
 .warningMessagePass{
     position:relative;
-    
+    bottom: 100px;
+    left:180px;
+    opacity:0;
+    transition: opacity 0.2s ease-in-out;
+    width:150px;
+    box-shadow: 0px -1px 26px 1px rgba(0,0,0,0.50) inset;
+    border:1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    display: inline-flex; 
+    padding:5px;
+    font-size: small;
+}
+
+.PasswordWarning{
+    position:relative;
+    bottom: 29px;
+    left:90px;
+    width:15px;
+    height: 20px;
+    font-size: 1.2em;
+}
+
+.PasswordWarning:hover + .warningMessagePass{
+    opacity:1;
+}
+
+.PasswordWarning:hover{
+    cursor:default    
+}
+
+
+/*------------------------------------------------------------------------*/
+
+.login{
+    width: fit-content;
+    position:absolute;
+    top: 140px;
+}
+
+/*------------------------------------------------------------------------*/
+
+.UsernameInput{
+    margin:5px;
+    height: 1.2em;
+    width:150px;
+}
+.UsernameWarning{
+    position:absolute;
+    font-size: 1.2em;
+    bottom:72px;
+    left:277px;
+
+}
+.UsernameWarning:hover + .warningMessageUser{
+    opacity:1;
+}
+
+.UsernameWarning:hover{
+    cursor:default    
+}
+.warningMessageUser{
+    position:absolute;
+    bottom: 70px;
+    left:295px;
+    opacity:0;
+    transition: opacity 0.2s ease-in-out;
+    width:150px;
+    box-shadow: 0px -1px 26px 1px rgba(0,0,0,0.50) inset;
+    border:1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    display: inline-flex; 
+    padding:5px;
+    font-size: small;
 }
