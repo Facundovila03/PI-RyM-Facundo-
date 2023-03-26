@@ -16,7 +16,7 @@ const validation = (userData,errors,setErrors,property)=>{
 
     if (property === 'password') {
         if (!validPassword.test(userData.password)) {
-            setErrors({...errors,password:'debe contener al menos un numero y de 6 a 10 digitos'})
+            setErrors({...errors,password:'Debe contener al menos un numero y de 6 a 10 digitos'})
         }else{
             setErrors({...errors,password:''})
         }

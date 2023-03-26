@@ -29,23 +29,19 @@ export default function Form (props){
     return(
         <div className={styles.Contenedor}>
         <form className={styles.form} onSubmit={handleSubmit}>
-            {/* <div className={styles.PasswordContainer} >
-                <label htmlFor="username" >Username:</label>
-                <input type='text'  name="username"  value={userData.username} onChange={handleInputChange} className={styles.PasswordInput}></input>
-                <div className={styles.PasswordWarning} style={errors.username?{opacity:1}:{opacity:0}}> &#9888;</div>
-                <p className={styles.warningMessagePass}>{errors.username}</p>
-            </div> */}
+
             <div className={styles.PasswordContainer}>
-                <label htmlFor="username"  >Username:</label>
+                <label htmlFor="username" className={styles.labelUsername} >Username:</label>
                 <input type='text' name="username" onChange={handleInputChange} value={userData.username} className={styles.UsernameInput}></input>
                 <div className={styles.UsernameWarning} style={errors.username?{display:'block'}:{display:'none'}}> &#9888;</div>
                 <p className={styles.warningMessageUser}>{errors.username}</p>
             {/* </div>
             <div className={styles.PasswordContainer}> */}
-                <label htmlFor="password"  >Password:</label>
-                <input type='password' name="password" onChange={handleInputChange} value={userData.password} className={styles.PasswordInput}></input>
+                <label htmlFor="password" className={styles.labelPassword} >Password:</label>
+                <div className={styles.auxPass}><input type='password' name="password" onChange={handleInputChange} value={userData.password} className={styles.PasswordInput}></input>
                 <div className={styles.PasswordWarning} style={errors.password?{display:'block'}:{display:'none'}}> &#9888;</div>
-                <p className={styles.warningMessagePass}>{errors.password}</p>
+                <p className={styles.warningMessagePass} > {errors.password}</p>
+                </div>
             </div>
             <button className={styles.login} >login</button>
         </form>
