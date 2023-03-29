@@ -5,12 +5,12 @@ import styles from './Forms.module.css'
 export default function Form (props){
     
     const [userData,setUserData] = useState({
-        username:'',
+        email:'',
         password:''
     })
     
     const [errors,setErrors] = useState({
-        username:'',
+        email:'',
         password:'' 
     })
     
@@ -26,15 +26,16 @@ export default function Form (props){
         props.login(userData)
     }
     
+    
     return(
         <div className={styles.Contenedor}>
         <form className={styles.form} onSubmit={handleSubmit}>
 
             <div className={styles.PasswordContainer}>
-                <label htmlFor="username" className={styles.labelUsername} >Username:</label>
-                <input type='text' name="username" onChange={handleInputChange} value={userData.username} className={styles.UsernameInput}></input>
-                <div className={styles.UsernameWarning} style={errors.username?{display:'block'}:{display:'none'}}> &#9888;</div>
-                <p className={styles.warningMessageUser}>{errors.username}</p>
+                <label htmlFor="email" className={styles.labelUsername} >Email:</label>
+                <input type='text' name="email" onChange={handleInputChange} value={userData.email} className={styles.UsernameInput}></input>
+                <div className={styles.UsernameWarning} style={errors.email?{display:'block'}:{display:'none'}}> &#9888;</div>
+                <p className={styles.warningMessageUser}>{errors.email}</p>
             {/* </div>
             <div className={styles.PasswordContainer}> */}
                 <label htmlFor="password" className={styles.labelPassword} >Password:</label>

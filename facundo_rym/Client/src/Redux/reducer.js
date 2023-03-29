@@ -7,21 +7,12 @@ import { ADD_CHARACTER, FILTER, ORDER, REMOVE_CHARACTER } from "./action"
 
 
 const reducer = (state = initialState, action)=>{
+    console.log(action)
     switch (action.type) {
         case ADD_CHARACTER:
-            console.log('parece q queres anadir un fav')
-            console.log(action.payload)
-            return {
-                ...state,
-                myFavorites: [...state.allCharacters,action.payload],
-                allCharacters: [...state.allCharacters,action.payload]
-            }
+            return { ...state, myFavorites: action.payload, allCharacters: action.payload };
             case REMOVE_CHARACTER:
-            console.log('parece q queres remover un fav')
-            return {
-                ...state,
-                myFavorites: state.myFavorites.filter((char)=> char.id !== action.payload)
-            }
+                return { ...state, myFavorites: action.payload };
             case FILTER:    
             
             const {allCharacters} = state
@@ -41,7 +32,6 @@ const reducer = (state = initialState, action)=>{
                     ...state,
                     myFavorites:aux
                 }
-                break;
                 default:
             return {...state}
     }

@@ -1,27 +1,34 @@
-var http = require('http');
-var fs = require('fs');
-const { url } = require("inspector");
-const getCharById = require('./controllers/getCharById')
-// const DATA = require('./utils/data') 
+const express = require('express');
+require('dotenv').config()
+const PORT = process.env.PORT || 3001;
+const server = express();
+const router = require('./routes/index')
 
-http.createServer((req,res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    console.log('esta llegando una peticion')
-    // if (req.url.includes('/rickandmorty/character')) {
-        var id = req.url.split('/').pop()
-    //     console.log('hola')
-    //     console.log(DATA)
-    //     console.log('chau')
-    //     const personaje = DATA.find((char)=> char.id === id)
-        // const personaje = DATA[id-1]
-    //     res.writeHead(200,{'Content-Type':'application/json'});
-    //     return res.end(JSON.stringify(personaje))
-    // }
-    if(req.url.includes('/rickandmorty/character')){
-        getCharById(res,id)
-    }
+server.use((req, res, next) => {
+   res.header('Access-Control-Allow-Origin', '*');
+   res.header('Access-Control-Allow-Credentials', 'true');
+   res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+   );
+   res.header(
+      'Access-Control-Allow-Methods',
+      'GET, POST, OPTIONS, PUT, DELETE'
+   );
+   next();
+});
 
-}).listen(3001,'localhost')
+server.use(express.json())
 
-// console.log(DATA)
-console.log('termine')
+
+// server.use((req,res,next)=>{
+//    const {email, password} = req.query
+// console.log({email,password})
+// next()
+// })
+server.use(router)
+// console.log(router)
+
+server.listen(PORT, () => {
+   console.log('Server raised in port: ' + PORT);
+});
