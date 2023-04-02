@@ -5,10 +5,6 @@ const {Router} = require('express')
 
 const router = Router()
 
-const loguear=()=>{
-    console.log('holaaa')
-}
-
 router.get('/character/:id',getCharById)
 
 router.get('/login',login)

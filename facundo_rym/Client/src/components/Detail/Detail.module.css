@@ -1,0 +1,26 @@
+.Contenedor{
+    display: flex;
+    width: fit-content;
+    background-color: rgb(221, 224, 171);
+    padding: 2rem;
+    border-radius: 20px;
+}
+.Imagen{
+    border-radius: 50%;
+}
+.aux{
+    display:flex;
+    justify-content: center;
+    margin-top: 12rem;
+}
+.ImgText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+}
+.Info{
+    font-size: 18px;
+    padding: 1rem;
+    border-left:1px  solid rgb(182, 185, 125);
+}

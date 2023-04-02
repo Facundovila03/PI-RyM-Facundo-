@@ -84,7 +84,7 @@ function App ()   {
         <Route path='/detail/:detailId' element={<Detail/>}></Route>
         <Route path='/favoritos' element={
           <div className={styles.divContenedor}>
-            <Favoritos/>
+            <Favoritos />
             </div>
         }></Route>
       </Routes>
