@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./Detail.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Detail = () => {
   const { detailId } = useParams();
 
   const [character, setCharacter] = useState({});
+
+  const nextId = parseInt(detailId) + 1;
+  console.log(nextId);
+  const prevId = parseInt(detailId) - 1;
+  console.log(prevId);
 
   useEffect(() => {
     const URL_BASE = "https://be-a-rym.up.railway.app/api";
@@ -17,9 +22,18 @@ const Detail = () => {
       setCharacter(response.data)
     );
   }, []);
-  // const reload = () => {
-  //   window.location.reload(false);
-  // };
+
+  const handleNext = () => {
+    axios(`http://localhost:3001/character/${nextId}`).then((response) =>
+      setCharacter(response.data)
+    );
+  };
+
+  const handlePrev = () => {
+    axios(`http://localhost:3001/character/${prevId}`).then((response) =>
+      setCharacter(response.data)
+    );
+  };
 
   return (
     <div className={styles.aux}>
@@ -28,6 +42,7 @@ const Detail = () => {
           <div className={styles.ImgText}>
             <img className={styles.Imagen} src={character.image} alt="img" />
             <h2>{character.name}</h2>
+            <p>{`#${character.id}`}</p>
           </div>
           <div className={styles.Info}>
             <div style={{ display: "flex" }}>
@@ -51,8 +66,20 @@ const Detail = () => {
                 <p>{character.origin?.name}</p>
               </div>
             </div>
+            <div className={styles.buttons}>
+              <Link to={`/detail/${prevId}`}>
+                <button className={styles.PrevBtn} onClick={handlePrev}>
+                  Prev
+                </button>
+              </Link>
+              <Link to={`/detail/${nextId}`}>
+                <button className={styles.NextBtn} onClick={handleNext}>
+                  Next
+                </button>
+              </Link>
+            </div>
           </div>
-          {/* <Link to={`/detail/${character.id + 1}`}>Next</Link> */}
+          {/* <Link to={`/detail/${currentId}`}>Next</Link> */}
         </div>
       ) : (
         <h3>Loading...</h3>
