@@ -1,6 +1,10 @@
-.App {
-   height: 100vw;
+.App  {
+   height: fit-content;
+   min-height: 100vh;
+   overflow: hidden;
    background-image: url('./rick-and-morty-space-wallpaper-preview-transformed.jpeg');
+   background-repeat: no-repeat;
+    background-size: cover;
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    display:flex;
    flex-direction: column;
