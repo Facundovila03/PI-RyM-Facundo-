@@ -7,6 +7,7 @@ export const ORDER = "ORDER";
 export const addCharacter = (character) => {
   const endpoint = "http://localhost:3001/fav";
   console.log("lleuge aca");
+  console.log(character);
   return (dispatch) => {
     axios.post(endpoint, character).then(({ data }) => {
       console.log(data);

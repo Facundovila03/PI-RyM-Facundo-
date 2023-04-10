@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 function CardOtros(props) {
   const [isFav, setIsFav] = useState(false);
 
+  // const { id, name, species, gender, image, origin, status } = props;
+
   useEffect(() => {
     props.myFavorites.forEach((fav) => {
       if (fav.id === props.id) {
@@ -26,7 +28,15 @@ function CardOtros(props) {
       setIsFav(true);
       console.log(props);
 
-      props.addCharacter(props);
+      props.addCharacter({
+        id: props.id,
+        name: props.name,
+        species: props.species,
+        gender: props.gender,
+        image: props.image,
+        origin: props.origin,
+        status: props.status,
+      });
     }
   };
 
@@ -87,16 +97,19 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, aux) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { id, name, species, gender, image, origin, status } = ownProps;
+
   return {
     removeCharacter: () => {
       console.log("removeCharacter");
-      dispatch(removeCharacter(aux.id));
+      dispatch(removeCharacter(id));
     },
     addCharacter: () => {
       console.log("addCharacter");
-      console.log(aux);
-      dispatch(addCharacter(aux));
+      dispatch(
+        addCharacter({ id, name, species, gender, image, origin, status })
+      );
     },
   };
 };

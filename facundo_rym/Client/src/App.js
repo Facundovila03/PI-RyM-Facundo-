@@ -20,6 +20,7 @@ function App() {
   // const password = 'facu123'
 
   const onClose = (id) => {
+    console.log(character);
     setCharacter(character.filter((char) => char.id !== id));
   };
 
@@ -32,7 +33,6 @@ function App() {
       .then((data) => {
         if (data.name && !character.find((char) => char.id === data.id)) {
           setCharacter((oldChars) => [...oldChars, data]);
-          console.log(character);
         } else {
           alert("Algo salió mal");
         }
@@ -45,11 +45,14 @@ function App() {
   function login(userData) {
     const { email, password } = userData;
     const URL = "http://localhost:3001/login";
-    axios.get(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-      const { access } = data;
-      setAccess(data);
-      access && navigate("/home");
-    });
+    axios
+      .get(URL + `?email=${email}&password=${password}`)
+      .then(({ data }) => {
+        const { access } = data;
+        setAccess(data);
+        access && navigate("/home");
+      })
+      .catch((error) => console.log(error.message));
   }
 
   //  function login(userData){

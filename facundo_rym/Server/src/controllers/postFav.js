@@ -1,8 +1,13 @@
 const { Favorite } = require("../DB_connection");
 
-const postFav = (req, res) => {
+const postFav = async (req, res) => {
   const { name, origin, status, image, species, gender } = req.body;
-  console.log(req.body);
+  console.log(name);
+  console.log(origin);
+  console.log(status);
+  console.log(image);
+  console.log(species);
+  console.log(gender);
   try {
     if (![name, origin, status, image, species, gender].every(Boolean))
       res.status(401).send("Faltan datos");
@@ -19,9 +24,9 @@ const postFav = (req, res) => {
         gender,
       },
     });
-
-    console.log(Favorite.findAll());
-    res.status(200).json(Favorite);
+    const favoritos = await Favorite.findAll();
+    console.log(favoritos);
+    res.status(200).json({ favorites: favoritos });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

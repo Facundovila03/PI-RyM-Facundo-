@@ -26,7 +26,7 @@ server.use(express.json());
 server.use(router);
 // console.log(router)
 
-conn.sync({ alter: true }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
     console.log("Server raised in port: " + PORT);
   });
